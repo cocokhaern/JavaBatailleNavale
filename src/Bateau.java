@@ -45,7 +45,7 @@ public class Bateau{
         boolean testX = false;
         boolean testY = false;
         char[][] formeSave = forme.clone();
-        int rot;
+        char rot;
         char lX;
         int pX=-1;
         int pY=-1;
@@ -56,13 +56,13 @@ public class Bateau{
        
             do{
                 System.out.println("\nOrientation (rotation vers la gauche de 0°(0), 90°(1), 180°(2), 270°(3)) ? :");
-                rot = Jeu.sc.nextInt();
+                rot = Jeu.sc.next().charAt(0);
                 switch (rot)
                 {
-                case 0 : testRot=true; break;
-                case 1 : this.pivot(); testRot=true; break;
-                case 2 : this.pivot();this.pivot(); testRot=true; break;
-                case 3 : this.pivot();this.pivot();this.pivot(); testRot=true; break;
+                case '0' : testRot=true; break;
+                case '1' : this.pivot(); testRot=true; break;
+                case '2' : this.pivot();this.pivot(); testRot=true; break;
+                case '3' : this.pivot();this.pivot();this.pivot(); testRot=true; break;
                 default : testRot=false; System.out.println("\nEntrée incorrecte, reccomencez :"); break;
                 }
             }while (testRot==false);
