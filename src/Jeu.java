@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 	
@@ -112,6 +113,23 @@ public class Jeu {
 		}
 		return b;
 	}
+	
+	public static int integerExceptionMethod(String message){
+		boolean exception=false;
+		int result=0;
+			do{
+				exception=false;
+				System.out.println(message);
+				try{
+					result = sc.nextInt();
+				} catch(InputMismatchException e){
+					exception=true;
+					Jeu.sc.nextLine();
+					System.out.println("Rentrez un nombre entier!");
+				}
+			}while(exception==true);
+		return result;
+	}
 
 	
 	/**
@@ -141,16 +159,16 @@ public class Jeu {
 
 		int cpuOrPlayer=0;								//param 0 : jouer contre un humain ou l'ordinateur
 		do{
-			System.out.println("\nVous désirez jouer :\n  1. contre l'ordinateur\n  2. joueur contre joueur");
-			cpuOrPlayer = sc.nextInt();
+			cpuOrPlayer=Jeu.integerExceptionMethod("\nVous désirez jouer :\n  1. contre l'ordinateur\n  2. joueur contre joueur");
+
 			if (cpuOrPlayer!=1 && cpuOrPlayer!=2)
 				System.out.println("Entrée incorrecte, recommencez (1 ou 2 ?) :");
 		}while(cpuOrPlayer!=1 && cpuOrPlayer!=2);
 		
 		int autoOrNot=0;								//param 1 : placement automatique ou manuel des bateaux
 		do{
-			System.out.println("\nPlacement des bateaux :\n  1. manuel\n  2. automatique");
-			autoOrNot = sc.nextInt();
+			autoOrNot=Jeu.integerExceptionMethod("\nPlacement des bateaux :\n  1. manuel\n  2. automatique");
+			
 			if (autoOrNot!=1 && autoOrNot!=2)
 				System.out.println("Entrée incorrecte, recommencez (1 ou 2 ?) :");
 		}while(autoOrNot!=1 && autoOrNot!=2);
@@ -161,22 +179,22 @@ public class Jeu {
 		if(cpuOrPlayer==2)
 		{
 			do{
-				System.out.println("\nQuelle règle de jeu ? : :\n  1. classiques (bateaux droits qui ne se touchent pas)\n  2. avancées (bateaux quelconques qui peuvent se toucher");
-				basicOrAdvanced = sc.nextInt();
+				basicOrAdvanced = Jeu.integerExceptionMethod("\nQuelle règle de jeu ? : :\n  1. classiques (bateaux droits qui ne se touchent pas)\n  2. avancées (bateaux quelconques qui peuvent se toucher");
 				if (basicOrAdvanced!=1 && basicOrAdvanced!=2 && basicOrAdvanced!=-1)
 					System.out.println("Entrée incorrecte, recommencez (1 ou 2 ?) :");
 			}while(basicOrAdvanced!=1 && basicOrAdvanced!=2);
 		}
 		
 		int typeFlotte=0;								// param 3 : type de flotte
-		System.out.println("\nAvec quelle flotte voulez-bous jouer ? \n" +
-						     "  1- Classique  (1 porte-avion, 2 croiseurs, 2 contre-torpilleurs, 2 torpilleurs) \n" + 
-						     "  2- Classique Rapide (1 porte-avion, 1 croiseur, 1 contre-torpilleur, 1 torpilleur) \n" +
-						     "  3- Classique 3Torpilleurs (1 porte-avion, 1 croiseur, 1 contre-torpilleur, 3 torpilleurs)");
+		
 		if (basicOrAdvanced==1)				//si regles basiques, seulement 3 flottes (avec '.' pour éviter la tangence des bateaux)
 			do
 			{	
-				typeFlotte = sc.nextInt();
+				typeFlotte = Jeu.integerExceptionMethod(
+							 "\nAvec quelle flotte voulez-bous jouer ? \n" +
+						     "  1- Classique  (1 porte-avion, 2 croiseurs, 2 contre-torpilleurs, 2 torpilleurs) \n" + 
+						     "  2- Classique Rapide (1 porte-avion, 1 croiseur, 1 contre-torpilleur, 1 torpilleur) \n" +
+						     "  3- Classique 3Torpilleurs (1 porte-avion, 1 croiseur, 1 contre-torpilleur, 3 torpilleurs)");
 				if(typeFlotte<1 || typeFlotte>3)
 					System.out.println("Entrée incorrecte, recommencez:\n");
 			}while(typeFlotte<1 || typeFlotte>3);
@@ -184,10 +202,14 @@ public class Jeu {
 		{
 			do
 			{	
-				System.out.println("  4- Variante Navale  (1 destroyer, 1 porte-DCA, 1 croiseur, 1 torpilleur, 1 contre-torpilleur) \n" + 
+				typeFlotte = Jeu.integerExceptionMethod(
+								   "\nAvec quelle flotte voulez-bous jouer ? \n" +
+					     		   "  1- Classique  (1 porte-avion, 2 croiseurs, 2 contre-torpilleurs, 2 torpilleurs) \n" + 
+					     		   "  2- Classique Rapide (1 porte-avion, 1 croiseur, 1 contre-torpilleur, 1 torpilleur) \n" +
+					     		   "  3- Classique 3Torpilleurs (1 porte-avion, 1 croiseur, 1 contre-torpilleur, 3 torpilleurs)" +
+					     		   "  4- Variante Navale  (1 destroyer, 1 porte-DCA, 1 croiseur, 1 torpilleur, 1 contre-torpilleur) \n" + 
 								   "  5- Variante Spatiale (1 vaisseau amiral, 2 speeders, 1 bombardier plasma, 1 transporteur) \n" +
-								   "  6- Variante Tetris (1 T-ship, 1 I-ship, 1 O-ship, 1 S-ship, 2 L-ship)\n");							
-				typeFlotte = sc.nextInt();
+								   "  6- Variante Tetris (1 T-ship, 1 I-ship, 1 O-ship, 1 S-ship, 2 L-ship)\n");					
 				if(typeFlotte<1|| typeFlotte>6)
 					System.out.println("Entrée incorrecte, recommencez:\n");
 			}while(typeFlotte<1 || typeFlotte>6);
@@ -196,8 +218,7 @@ public class Jeu {
 		int X=10;								//param 4 : taille de la grille (de 10 à 26)
 		do
 		{
-			System.out.println("\nLongueur de grille ? (de 10 à 26) :");
-			X = sc.nextInt();
+				X=Jeu.integerExceptionMethod("\nLongueur de grille ? (de 10 à 26) :");
 			if(X<10 || X>26)
 				System.out.println("Entrée incorrecte, recommencez:\n");
 		}while(X<10 || X>26);

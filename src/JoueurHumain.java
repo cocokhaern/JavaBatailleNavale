@@ -1,3 +1,5 @@
+import java.util.InputMismatchException;
+
 /**
  *  * @author CorentinR
  *  
@@ -110,22 +112,21 @@ public class JoueurHumain implements Joueur {
 	public Coord tirer()
 	{
 		boolean testDeja;
-		int x; int y;
-		do
-		{
+		int x=0;
+		int y=0;
+		do{
 			testDeja=false;
 			System.out.println(name + " : rentrez les coordonnées de la cible (ex: A6) :");
 			do{
-				do
-				{
+				do{
 					System.out.println("X:");
 					x = Jeu.convertLN(Jeu.sc.next().charAt(0));
 					if(x>=X || x<0)										//validité : dans le plateau
 						System.out.println("Entrée incorrecte, recommencez :\n");
 				}while(x>=X || x<0);
-	
-					System.out.println("Y:");
-					y = Jeu.sc.nextInt();
+					
+					y=Jeu.integerExceptionMethod("Y:");
+					
 					if(y>=X || y<0)										//validité : dans le plateau
 						System.out.println("Entrée incorrecte, recommencez :\n");
 			}while(y>=X || y<0 || x>=X || x<0);

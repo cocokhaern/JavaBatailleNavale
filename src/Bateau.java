@@ -85,8 +85,7 @@ public class Bateau{
 	            }while(testX == false);
 	            
 	            do{
-		            System.out.println("Position Y ?  (0-" + (plateau.length-forme[0].length) + ")");
-		            pY = Jeu.sc.nextInt();
+		            pY = Jeu.integerExceptionMethod("Position Y ?  (0-" + (plateau.length-forme[0].length) + ")");
 		            if(pY<0 || pY>plateau.length-forme[0].length)
 		            {
 		            	System.out.println("Entrée incorrecte, recommencez :");
@@ -115,8 +114,7 @@ public class Bateau{
 	            }while(testX == false);
 	            
 	            do{
-		            System.out.println("Position Y ?  (0-" + (plateau.length-forme[0].length+2) + ")");
-		            pY = Jeu.sc.nextInt();
+		            pY = Jeu.integerExceptionMethod("Position Y ?  (0-" + (plateau.length-forme[0].length+2) + ")");
 		            pY--;		
 		            if(pY<-1 || pY>plateau.length-forme[0].length+1)
 		            {
