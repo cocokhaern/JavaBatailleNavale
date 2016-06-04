@@ -2,7 +2,7 @@
  *
  * @author CorentinR
  *
- *         Interface des Joueurs, implémentée par JoueurHumain et Joueur Robot
+ *         Interface des Joueurs, implÃ©mentÃ©e par JoueurHumain et Joueur Robot
  */
 public interface Joueur {
 

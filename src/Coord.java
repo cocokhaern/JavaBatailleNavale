@@ -2,17 +2,17 @@
  *
  * @author coreut43
  *
- *         Class : Coord, objet représentant des coordonnées de tableau en 2
+ *         Class : Coord, objet reprÃ©sentant des coordonnÃ©es de tableau en 2
  *         dimensions (permet de renvoyer x et y en une seule fois dans une
- *         méthode)
+ *         mÃ©thode)
  */
 public class Coord {
 
-	private int x; // abscisse de la coordonnée
-	private int y; // ordonnée de la coordonnée
+	private int x; // abscisse de la coordonnÃ©e
+	private int y; // ordonnÃ©e de la coordonnÃ©e
 
 	/**
-	 * constructeur par défaut -> donne le Coord (0,0)
+	 * constructeur par dÃ©faut -> donne le Coord (0,0)
 	 */
 	public Coord() {
 		x = 0;
@@ -20,12 +20,12 @@ public class Coord {
 	}
 
 	/**
-	 * constructeur parametré : donne le Coord(xx,yy)
+	 * constructeur parametrÃ© : donne le Coord(xx,yy)
 	 * 
 	 * @param xx
-	 *            abscisse du Coord à créer
+	 *            abscisse du Coord Ã  crÃ©er
 	 * @param yy
-	 *            ordonnée du Coord à créer
+	 *            ordonnÃ©e du Coord Ã  crÃ©er
 	 */
 	public Coord(int xx, int yy) {
 		x = xx;

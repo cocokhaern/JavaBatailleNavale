@@ -2,12 +2,12 @@
  * 
  * @author coreut43
  *
- *         Type enuméré : représente les différents états sur peuvent prendre
- *         une case des plateaux INVALIDE : debug INC : état inconnu (pas encore
- *         tiré) BATEAU : on sait qu'un bateau est sur cette case EAU : on sait
- *         que de l'eau est sur cette case MANQUE : case EAU découverte après
- *         tir TOUCHE : case BATEAU découverte après tir COULE : case BATEAU
- *         découverte après tir et bateau coulé (toutes les cases TOUCHE du
+ *         Type enumÃ©rÃ© : reprÃ©sente les diffÃ©rents Ã©tats sur peuvent prendre
+ *         une case des plateaux INVALIDE : debug INC : Ã©tat inconnu (pas encore
+ *         tirÃ©) BATEAU : on sait qu'un bateau est sur cette case EAU : on sait
+ *         que de l'eau est sur cette case MANQUE : case EAU dÃ©couverte aprÃ©s
+ *         tir TOUCHE : case BATEAU dÃ©couverte aprÃ©s tir COULE : case BATEAU
+ *         dÃ©couverte aprÃ©s tir et bateau coulÃ© (toutes les cases TOUCHE du
  *         bateau deviennent COULE)
  */
 

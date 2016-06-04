@@ -4,8 +4,8 @@ import java.util.Scanner;
 /**
  * @author CorentinR
  *
- *         Classe qui contient la méthode main, et qui gère tout le déroulement
- *         du jeu jusqu'à sa fin (victoire d'un joueur)
+ *         Classe qui contient la mÃ©thode main, et qui gÃ©re tout le dÃ©roulement
+ *         du jeu jusqu'Ã  sa fin (victoire d'un joueur)
  * 
  * 
  *
@@ -16,21 +16,21 @@ public class Jeu {
 
 	public static Scanner sc = new Scanner(System.in); // scanner
 	public static int tour = 0; // compteur de tour
-	public static Coord tir = null; // coordonnées du tir en cours
+	public static Coord tir = null; // coordonnÃ©es du tir en cours
 	public static Etat etatTir = Etat.INVALIDE; // etat du tir en cours
 												// (EAU/BATEAU , puis
 												// MANQUE/TOUCHE/COULE)
 	public static char ready; // permet uniquement de demander au joueur s'il
 								// est pret, valeur insignifiante
 
-	/// Méthodes ///
+	/// MÃ©thodes ///
 
 	/**
-	 * Permet de convertir un nombre de 0 à 25 en sa lettre d'alphabet
-	 * correspondante (ordre alphanumérique, ex : 24=Y)
+	 * Permet de convertir un nombre de 0 Ã  25 en sa lettre d'alphabet
+	 * correspondante (ordre alphanumÃ©rique, ex : 24=Y)
 	 * 
 	 * @param a
-	 *            entier, chiffre à convertir
+	 *            entier, chiffre Ã  convertir
 	 * 
 	 * @return char, lettre correspondante
 	 */
@@ -120,11 +120,11 @@ public class Jeu {
 	}
 
 	/**
-	 * Permet de convertir une lettre de A à Z en sa place dans l'ordre
-	 * alphanumérique (ex : W=23)
+	 * Permet de convertir une lettre de A Ã  Z en sa place dans l'ordre
+	 * alphanumÃ©rique (ex : W=23)
 	 * 
 	 * @param a
-	 *            char, lettre à convertir
+	 *            char, lettre Ã  convertir
 	 * 
 	 * @return entier, entier correspondant
 	 */
@@ -243,38 +243,38 @@ public class Jeu {
 	}
 
 	/**
-	 * Méthode appelée en premier dans le main, au lancement du programme.
-	 * Titre, puis paramétrage de la partie
+	 * MÃ©thode appelÃ©e en premier dans le main, au lancement du programme.
+	 * Titre, puis paramÃ©trage de la partie
 	 * 
 	 * cpuOrPlayer -> joueur contre joueur ou joueur contre ordinateur autoOrNor
-	 * -> placement des bateaux aléatoire ou manuel basicOrAdvanced -> regles de
-	 * jeu basique (bateaux droit qui ne se touchent pas) ou avancées typeFlotte
-	 * -> selection d'un groupe de Bateau parmis ceux proposés X -> taille de la
-	 * grille (10 à 26)
+	 * -> placement des bateaux alÃ©atoire ou manuel basicOrAdvanced -> regles de
+	 * jeu basique (bateaux droit qui ne se touchent pas) ou avancÃ©es typeFlotte
+	 * -> selection d'un groupe de Bateau parmis ceux proposÃ©s X -> taille de la
+	 * grille (10 Ã  26)
 	 * 
 	 * 
-	 * @return tableau d'entier des paramètres de la partie, taille fixe
+	 * @return tableau d'entier des paramÃ©tres de la partie, taille fixe
 	 */
 	public static int[] launch() {
 		System.out.println(" _______________________________________________ \n" + // titre
 																					// d'ouverture
 				"|                                               |\n"
-				+ "|  °*¤  Bienvenue dans la Bataille Navale  ¤*°  |\n"
+				+ "|  Ã©*Ã©  Bienvenue dans la Bataille Navale  Ã©*Ã©  |\n"
 				+ "|                                               |\n"
 				+ "|       Conception : Corentin REUT - 2011       |\n"
 				+ "|             Pour : l'EIDD - Paris7            |\n"
 				+ "|                                               |\n"
-				+ "|                °*¤  Bon jeu!  ¤*°             |\n"
+				+ "|                Ã©*Ã©  Bon jeu!  Ã©*Ã©             |\n"
 				+ "|_______________________________________________|");
-		System.out.println("\n\nRentrez -1 durant le parametrage pour accéder à l'aide complet\n");
+		System.out.println("\n\nRentrez -1 durant le parametrage pour accÃ©der Ã  l'aide complet\n");
 
 		int cpuOrPlayer = 0; // param 0 : jouer contre un humain ou l'ordinateur
 		do {
 			cpuOrPlayer = Jeu.integerExceptionMethod(
-					"\nVous désirez jouer :\n  1. contre l'ordinateur\n  2. joueur contre joueur");
+					"\nVous dÃ©sirez jouer :\n  1. contre l'ordinateur\n  2. joueur contre joueur");
 
 			if (cpuOrPlayer != 1 && cpuOrPlayer != 2)
-				System.out.println("Entrée incorrecte, recommencez (1 ou 2 ?) :");
+				System.out.println("EntrÃ©e incorrecte, recommencez (1 ou 2 ?) :");
 		} while (cpuOrPlayer != 1 && cpuOrPlayer != 2);
 
 		int autoOrNot = 0; // param 1 : placement automatique ou manuel des
@@ -283,26 +283,26 @@ public class Jeu {
 			autoOrNot = Jeu.integerExceptionMethod("\nPlacement des bateaux :\n  1. manuel\n  2. automatique");
 
 			if (autoOrNot != 1 && autoOrNot != 2)
-				System.out.println("Entrée incorrecte, recommencez (1 ou 2 ?) :");
+				System.out.println("EntrÃ©e incorrecte, recommencez (1 ou 2 ?) :");
 		} while (autoOrNot != 1 && autoOrNot != 2);
 
-		int basicOrAdvanced = 0; // param 2 : regles basiques ou avancées
+		int basicOrAdvanced = 0; // param 2 : regles basiques ou avancÃ©es
 		if (cpuOrPlayer == 1) // si jeu contre l'ordinateur, les regles basiques
-								// sont imposées par soucis d'une IA cohérente
+								// sont imposÃ©es par soucis d'une IA cohÃ©rente
 			basicOrAdvanced = 1;
 		if (cpuOrPlayer == 2) {
 			do {
 				basicOrAdvanced = Jeu.integerExceptionMethod(
-						"\nQuelle règle de jeu ? : :\n  1. classiques (bateaux droits qui ne se touchent pas)\n  2. avancées (bateaux quelconques qui peuvent se toucher");
+						"\nQuelle rÃ©gle de jeu ? : :\n  1. classiques (bateaux droits qui ne se touchent pas)\n  2. avancÃ©es (bateaux quelconques qui peuvent se toucher");
 				if (basicOrAdvanced != 1 && basicOrAdvanced != 2 && basicOrAdvanced != -1)
-					System.out.println("Entrée incorrecte, recommencez (1 ou 2 ?) :");
+					System.out.println("EntrÃ©e incorrecte, recommencez (1 ou 2 ?) :");
 			} while (basicOrAdvanced != 1 && basicOrAdvanced != 2);
 		}
 
 		int typeFlotte = 0; // param 3 : type de flotte
 
 		if (basicOrAdvanced == 1) // si regles basiques, seulement 3 flottes
-									// (avec '.' pour éviter la tangence des
+									// (avec '.' pour Ã©viter la tangence des
 									// bateaux)
 			do {
 				typeFlotte = Jeu.integerExceptionMethod("\nAvec quelle flotte voulez-bous jouer ? \n"
@@ -310,9 +310,9 @@ public class Jeu {
 						+ "  2- Classique Rapide (1 porte-avion, 1 croiseur, 1 contre-torpilleur, 1 torpilleur) \n"
 						+ "  3- Classique 3Torpilleurs (1 porte-avion, 1 croiseur, 1 contre-torpilleur, 3 torpilleurs)");
 				if (typeFlotte < 1 || typeFlotte > 3)
-					System.out.println("Entrée incorrecte, recommencez:\n");
+					System.out.println("EntrÃ©e incorrecte, recommencez:\n");
 			} while (typeFlotte < 1 || typeFlotte > 3);
-		if (basicOrAdvanced == 2) // si regles avancées, 6 flottes (sans '.' car
+		if (basicOrAdvanced == 2) // si regles avancÃ©es, 6 flottes (sans '.' car
 									// tangence possible)
 		{
 			do {
@@ -324,41 +324,41 @@ public class Jeu {
 						+ "  5- Variante Spatiale (1 vaisseau amiral, 2 speeders, 1 bombardier plasma, 1 transporteur) \n"
 						+ "  6- Variante Tetris (1 T-ship, 1 I-ship, 1 O-ship, 1 S-ship, 2 L-ship)\n");
 				if (typeFlotte < 1 || typeFlotte > 6)
-					System.out.println("Entrée incorrecte, recommencez:\n");
+					System.out.println("EntrÃ©e incorrecte, recommencez:\n");
 			} while (typeFlotte < 1 || typeFlotte > 6);
 		}
 
-		int X = 10; // param 4 : taille de la grille (de 10 à 26)
+		int X = 10; // param 4 : taille de la grille (de 10 Ã  26)
 		do {
-			X = Jeu.integerExceptionMethod("\nLongueur de grille ? (de 10 à 26) :");
+			X = Jeu.integerExceptionMethod("\nLongueur de grille ? (de 10 Ã  26) :");
 			if (X < 10 || X > 26)
-				System.out.println("Entrée incorrecte, recommencez:\n");
+				System.out.println("EntrÃ©e incorrecte, recommencez:\n");
 		} while (X < 10 || X > 26);
 
 		int[] param = { cpuOrPlayer, autoOrNot, X, typeFlotte, basicOrAdvanced }; // liste
-																					// complètes
+																					// complÃ©tes
 																					// des
-																					// paramètres
-																					// à
+																					// paramÃ©tres
+																					// Ã©
 																					// renvoyer
 		return param;
 	}
 
 	/**
-	 * Crée les deux flottes (tableau de Bateau) qui seront utilisés pour la
-	 * partie, suivant les paramètres de l'utilisateur allège le code de
-	 * launch() et permet d'initialiser uniquement les bateaux qui seront joués
+	 * CrÃ©e les deux flottes (tableau de Bateau) qui seront utilisÃ©s pour la
+	 * partie, suivant les paramÃ©tres de l'utilisateur allÃ©ge le code de
+	 * launch() et permet d'initialiser uniquement les bateaux qui seront jouÃ©s
 	 * 
 	 * @param paramCpu
 	 *            entier, 1 si playerVScpu, 2 si playerVSplayer
 	 * @param paramFlotte
-	 *            entier, détermine la flotte à initialiser
-	 * @return les deux flottes identiques suivant les paramètres en entrée
+	 *            entier, dÃ©termine la flotte Ã  initialiser
+	 * @return les deux flottes identiques suivant les paramÃ©tres en entrÃ©e
 	 */
 	public static Bateau[][] creationFlotte(int paramRegle, int paramFlotte) {
 
 		if (paramRegle == 1) // jeu contre l'ordinateur
-		{ // les '.' permettent d'éviter la tangence des bateaux et
+		{ // les '.' permettent d'Ã©viter la tangence des bateaux et
 			// n'apparaissent pas sur les plateaux
 			if (paramFlotte == 1) {
 				char[][] tab1 = { { ' ', '.', '.', '.', '.', '.', ' ' }, { '.', 'X', 'X', 'X', 'X', 'X', '.' },
@@ -567,16 +567,16 @@ public class Jeu {
 	}
 
 	/**
-	 * Gère un tour de partie complet, se déroulant comme suit : *Incrémentation
+	 * GÃ©re un tour de partie complet, se dÃ©roulant comme suit : *IncrÃ©mentation
 	 * du nombre de tour *Premier joueur : -confirmation pour jouer -information
-	 * du tir précédent de l'adversaire (plateaux) -invite le joueur à tirer
-	 * -traitement du tir (recevoir(encaisser), etc) -résultat du tir (plateaux)
-	 * SI victoire -> return *Deuxième joueur : idem
+	 * du tir prÃ©cÃ©dent de l'adversaire (plateaux) -invite le joueur Ã  tirer
+	 * -traitement du tir (recevoir(encaisser), etc) -rÃ©sultat du tir (plateaux)
+	 * SI victoire -> return *DeuxiÃ©me joueur : idem
 	 * 
 	 * @param j1
-	 *            Joueur, premier joueur humain à jouer
+	 *            Joueur, premier joueur humain Ã  jouer
 	 * @param j2
-	 *            Joueur, deuxieme joueur humain à jouer
+	 *            Joueur, deuxieme joueur humain Ã  jouer
 	 * @return true si la partie est finie, false sinon (->detecteur de fin de
 	 *         partie)
 	 */
@@ -596,9 +596,9 @@ public class Jeu {
 	/// MAIN ///
 
 	/**
-	 * Méthode main : gère tout le déroulement du jeu : * intro et paramétrage +
-	 * création des flottes (launch() et creationFlotte()) * tour de jeu en
-	 * boucle while jusqu'à la victoire
+	 * MÃ©thode main : gÃ©re tout le dÃ©roulement du jeu : * intro et paramÃ©trage +
+	 * crÃ©ation des flottes (launch() et creationFlotte()) * tour de jeu en
+	 * boucle while jusqu'Ã  la victoire
 	 */
 	/**
 	 * @param args
@@ -608,7 +608,7 @@ public class Jeu {
 	 */
 	public static void main(String args[]) {
 
-		// lancement (parametrage et création des flottes)
+		// lancement (parametrage et crÃ©ation des flottes)
 		int[] param = launch();
 		int X = param[2];
 		Bateau[][] flottes = creationFlotte(param[4], param[3]);
@@ -637,13 +637,13 @@ public class Jeu {
 			System.out.println("\nMode 2 - joueur contre joueur :\n");
 			System.out.print("Joueur 1 : ");
 			Joueur j1 = new JoueurHumain(X);
-			System.out.println("\nA présent, placez vos bateaux sur la grille " + X + "-" + X);
+			System.out.println("\nA prÃ©sent, placez vos bateaux sur la grille " + X + "-" + X);
 			j1.initialiser(flottes[0], param[1], param[4]);
 			System.out.println(
 					"\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
 			System.out.print("Joueur 2 : ");
 			Joueur j2 = new JoueurHumain(X);
-			System.out.println("\nA présent, placez vos bateaux sur la grille " + X + "-" + X);
+			System.out.println("\nA prÃ©sent, placez vos bateaux sur la grille " + X + "-" + X);
 			j2.initialiser(flottes[1], param[1], param[4]);
 
 			boolean vic = false;
@@ -651,13 +651,13 @@ public class Jeu {
 				tour++;
 				System.out.println(
 						"\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-				System.out.println("Prêt à jouer " + ((JoueurHumain) j1).getName() + "?");
+				System.out.println("PrÃ©t Ã  jouer " + ((JoueurHumain) j1).getName() + "?");
 				ready = sc.next().charAt(0);
 				vic = tour(j1, j2);
 				if (vic == false) {
 					System.out.println(
 							"\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-					System.out.println("Prêt à jouer " + ((JoueurHumain) j2).getName() + "?");
+					System.out.println("PrÃ©t Ã  jouer " + ((JoueurHumain) j2).getName() + "?");
 					ready = sc.next().charAt(0);
 					vic = tour(j2, j1);
 				}

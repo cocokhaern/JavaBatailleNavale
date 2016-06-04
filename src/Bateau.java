@@ -11,7 +11,7 @@ public class Bateau {
 	private char[][] forme;
 	private int pV;
 
-	/// Méthodes ///
+	/// MÃ©thodes ///
 
 	public Bateau(String name, int life, char[][] form) {
 		nom = name;
@@ -24,7 +24,7 @@ public class Bateau {
 		if (pV > 0)
 			pV--;
 		else
-			System.out.println("ERROR : bateau deja coulé, probleme de test de validité de tir");
+			System.out.println("ERROR : bateau deja coulÃ©, probleme de test de validitÃ© de tir");
 
 		if (pV == 0)
 			couler = true;
@@ -44,14 +44,14 @@ public class Bateau {
 		char lX;
 		int pX = -1;
 		int pY = -1;
-
+		
 		do {
 			forme = formeSave.clone();
 			System.out.println(
 					"\n\n=> Placement du " + nom.toUpperCase() + ", occupant " + pV + " cases : \n" + this.formeAff());
 
 			do {
-				System.out.println("\nOrientation (rotation vers la gauche de 0°(0), 90°(1), 180°(2), 270°(3)) ? :");
+				System.out.println("\nOrientation (rotation vers la gauche de 0Â°(0), 90Â°(1), 180Â°(2), 270Â°(3)) ? :");
 				rot = Jeu.sc.next().charAt(0);
 				switch (rot) {
 				case '0':
@@ -74,11 +74,11 @@ public class Bateau {
 					break;
 				default:
 					testRot = false;
-					System.out.println("\nEntrée incorrecte, reccomencez :");
+					System.out.println("\nEntrÃ©e incorrecte, reccomencez :");
 					break;
 				}
 			} while (testRot == false);
-			System.out.println("Le bateau sera placé avec cette orientation : \n" + this.formeAff());
+			System.out.println("Le bateau sera placÃ© avec cette orientation : \n" + this.formeAff());
 
 			if (paramRegle == 2) {
 				do {
@@ -86,7 +86,7 @@ public class Bateau {
 					lX = Jeu.sc.next().charAt(0);
 					pX = Jeu.convertLN(lX);
 					if (pX < 0 || pX > plateau.length - forme.length) {
-						System.out.println("Entrée incorrecte, recommencez :");
+						System.out.println("EntrÃ©e incorrecte, recommencez :");
 						testX = false;
 					}
 
@@ -97,7 +97,7 @@ public class Bateau {
 				do {
 					pY = Jeu.integerExceptionMethod("Position Y ?  (0-" + (plateau.length - forme[0].length) + ")");
 					if (pY < 0 || pY > plateau.length - forme[0].length) {
-						System.out.println("Entrée incorrecte, recommencez :");
+						System.out.println("EntrÃ©e incorrecte, recommencez :");
 						testY = false;
 					} else
 						testY = true;
@@ -112,7 +112,7 @@ public class Bateau {
 					pX = Jeu.convertLN(lX);
 					pX--;
 					if (pX < -1 || pX > plateau.length - forme.length + 1) {
-						System.out.println("Entrée incorrecte, recommencez :");
+						System.out.println("EntrÃ©e incorrecte, recommencez :");
 						testX = false;
 					}
 
@@ -124,7 +124,7 @@ public class Bateau {
 					pY = Jeu.integerExceptionMethod("Position Y ?  (0-" + (plateau.length - forme[0].length + 2) + ")");
 					pY--;
 					if (pY < -1 || pY > plateau.length - forme[0].length + 1) {
-						System.out.println("Entrée incorrecte, recommencez :");
+						System.out.println("EntrÃ©e incorrecte, recommencez :");
 						testY = false;
 					} else
 						testY = true;
@@ -268,7 +268,7 @@ public class Bateau {
 	/// Get - Set ///
 
 	public String getNom() // permet d'annoncer au joueur lequel de ses bateaux
-							// a été touché par l'adversaire
+							// a Ã©tÃ© touchÃ© par l'adversaire
 	{
 		return nom;
 	}

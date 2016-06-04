@@ -1,7 +1,7 @@
 /**
  * @author CorentinR
  *
- *         Représente le joueur robot (intelligence artificielle). Méthodes
+ *         ReprÃ©sente le joueur robot (intelligence artificielle). MÃ©thodes
  *         permettant de tirer, actualiser, et gestion de toute l'IA
  * 
  */
@@ -9,24 +9,24 @@ public class JoueurRobot implements Joueur {
 
 	/// Champs ///
 
-	private Case[][] plateau; // plateau du joueur, mis à jour avec les coups
-								// joués par l'adversaire humain
-	private Case[][] plateauAdv; // plateau de l'adversaire, inconnu, mis à jour
-									// avec les coups joués par le robot
+	private Case[][] plateau; // plateau du joueur, mis Ã  jour avec les coups
+								// jouÃ©s par l'adversaire humain
+	private Case[][] plateauAdv; // plateau de l'adversaire, inconnu, mis Ã  jour
+									// avec les coups jouÃ©s par le robot
 	int X; // taille des plateau X*X
-	int nombreBatAdv; // nombre de bateau restant à l'adversaire (permet de
-						// détecter la victoire)
-	boolean piste; // indique si le robot a localisé un bateau
-	boolean pisteDir; // indique si le robot a localisé un bateau et sait dans
+	int nombreBatAdv; // nombre de bateau restant Ã  l'adversaire (permet de
+						// dÃ©tecter la victoire)
+	boolean piste; // indique si le robot a localisÃ© un bateau
+	boolean pisteDir; // indique si le robot a localisÃ© un bateau et sait dans
 						// quel direction tirer pour le couler
-	Coord init; // Coord de la première Case touché pour le Bateau actuellement
-				// pisté
-	Coord lastCoord; // Coord de la dernière Case touché pour le Bateau
-						// actuellement pisté
-	int direction; // direction dans laquelle tirer par rapport à lastCoord
+	Coord init; // Coord de la premiÃ©re Case touchÃ© pour le Bateau actuellement
+				// pistÃ©
+	Coord lastCoord; // Coord de la derniÃ©re Case touchÃ© pour le Bateau
+						// actuellement pistÃ©
+	int direction; // direction dans laquelle tirer par rapport Ã  lastCoord
 					// (0:haut, 1:gauche, 2:bas, 3:droit).
 
-	/// Méthodes ///
+	/// MÃ©thodes ///
 
 	public JoueurRobot(int nX) {
 		X = nX;
@@ -154,16 +154,16 @@ public class JoueurRobot implements Joueur {
 
 	public Etat resultatTir(Joueur adv, Etat result, Coord coordTir) {
 		Etat etatRefresh = Etat.INVALIDE;
-		if (result == Etat.EAU) // si Etat.EAU : une seule possibilité, pas de
+		if (result == Etat.EAU) // si Etat.EAU : une seule possibilitÃ©, pas de
 								// test couler, etc
 		{
 			etatRefresh = Etat.MANQUE;
 			plateauAdv[coordTir.getX()][coordTir.getY()].setHow(etatRefresh); // met
-																				// à
+																				// Ã©
 																				// jour
 																				// le
 																				// joueur
-			adv.refresh(etatRefresh, coordTir); // met à jour l'adversaire
+			adv.refresh(etatRefresh, coordTir); // met Ã  jour l'adversaire
 			if (piste == true) {
 				if (pisteDir == true)
 					this.dirInverse();
@@ -172,27 +172,27 @@ public class JoueurRobot implements Joueur {
 			}
 
 		} else if (result == Etat.BATEAU) // si Etat.BATEAU : test couler -> 2
-											// possibilités
+											// possibilitÃ©s
 		{
 			boolean couler = adv.testCouler(coordTir); // test si la bateau
-														// touché est coulé
+														// touchÃ© est coulÃ©
 														// (pV=0)
 			if (couler == false) // si NON -> TOUCHE
 			{
 				etatRefresh = Etat.TOUCHE;
 				plateauAdv[coordTir.getX()][coordTir.getY()].setHow(etatRefresh); // met
-																					// à
+																					// Ã©
 																					// jour
 																					// le
 																					// joueur
-				int type = adv.refresh(etatRefresh, coordTir); // met à jour
+				int type = adv.refresh(etatRefresh, coordTir); // met Ã  jour
 																// l'adversaire
 																// et renvoit
 																// l'identifiant
 																// du bateau
-																// touché
+																// touchÃ©
 				plateauAdv[coordTir.getX()][coordTir.getY()].setTypeBat(type); // met
-																				// à
+																				// Ã©
 																				// jour
 																				// le
 																				// joueur
@@ -200,7 +200,7 @@ public class JoueurRobot implements Joueur {
 																				// type
 																				// de
 																				// bateau
-																				// touché
+																				// touchÃ©
 
 				if (piste == false) {
 					piste = true;
@@ -223,7 +223,7 @@ public class JoueurRobot implements Joueur {
 
 				for (int i = 0; i < X; i++) // parcours tout le plateau et passe
 											// toutes les cases TOUCHE du bateau
-											// coulé en COULE
+											// coulÃ© en COULE
 				{
 					for (int j = 0; j < X; j++) {
 						if (plateauAdv[i][j].getTypeBat() == type)
@@ -231,17 +231,17 @@ public class JoueurRobot implements Joueur {
 
 					}
 				}
-				nombreBatAdv--; // décrémente le nombre de bateaux restant à
+				nombreBatAdv--; // dÃ©crÃ©mente le nombre de bateaux restant Ã©
 								// l'adversaire
 			}
 		} else
-			System.out.println(" ERROR : case deja jouée ou état invalide, probleme de test \"deja\""); // debug
+			System.out.println(" ERROR : case deja jouÃ©e ou Ã©tat invalide, probleme de test \"deja\""); // debug
 
 		plateauAdv[coordTir.getX()][coordTir.getY()].setDeja(true); // =>cette
 																	// case ne
 																	// pourra
 																	// plus etre
-																	// jouée
+																	// jouÃ©e
 		System.out.println(this);
 		return etatRefresh;
 	}
@@ -287,7 +287,7 @@ public class JoueurRobot implements Joueur {
 
 	public boolean victoire() {
 		if (nombreBatAdv == 0) {
-			System.out.println("Désolé, l'ordinateur vous a battu et a gagné en " + Jeu.tour + " tours.");
+			System.out.println("DÃ©solÃ©, l'ordinateur vous a battu et a gagnÃ© en " + Jeu.tour + " tours.");
 			return true;
 		}
 
@@ -301,7 +301,7 @@ public class JoueurRobot implements Joueur {
 	}
 
 	public String toString() {
-		return "\n.\n.\n.\nL'ordinateur a joué !\n.\n.\n.\n\n ";
+		return "\n.\n.\n.\nL'ordinateur a jouÃ© !\n.\n.\n.\n\n ";
 	}
 
 	public void recap(Etat etatTir, Coord coordTir) {
